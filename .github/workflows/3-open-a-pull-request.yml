@@ -82,7 +82,7 @@ jobs:
         id: check-pr-description
         continue-on-error: true
         run: |
-          if [ -n "${PR_BODY//[[:space:]]/}" ]; then
+          if [[ "$PR_BODY" =~ [^[:space:]] ]]; then
             echo "STEP_MESSAGE=Pull request description" >> $GITHUB_OUTPUT
           else
             echo "STEP_MESSAGE=Pull request description is empty (allowed)" >> $GITHUB_OUTPUT
